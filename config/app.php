@@ -136,6 +136,10 @@ return [
 
     'providers' => [
 
+
+        /*tymon jwt*/
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class ,
+        /*tymon jwt*/
         /*
          * Laravel Framework Service Providers...
          */
