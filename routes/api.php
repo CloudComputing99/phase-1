@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,3 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+/*---------------------------------------------JWT apis are below-----------------------------------------------------*/
+
+Route::post('login', 'AuthController@login');
+
+Route::get('me', 'AuthController@me');
+
+Route::post('register' , 'AuthController@register');
+
+Route::post('delete-user' , 'AuthController@delete');
+
