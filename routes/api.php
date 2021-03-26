@@ -28,3 +28,14 @@ Route::post('register' , 'AuthController@register');
 
 Route::post('delete-user' , 'AuthController@delete');
 
+
+/*------------------------------------------visit apis----------------------------------------------------------------*/
+
+Route::middleware('auth:api')->post('store-visit' , 'VisitController@store');
+
+Route::post('delete-visit' , 'VisitController@delete');
+
+Route::get('get-dr-visits' , 'VisitController@get_visits');
+
+
+
