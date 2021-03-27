@@ -23,5 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('hi' , function (){
     $doctor = new \App\Doctor();
     $doctor->code = 567891209;
+    $doctor->name = 'حسین آمری';
+    $doctor->city = 'تهران';
+    $doctor->specialty = 'تخصص مغز و اعصاب';
+    $doctor->degree = 'فوق تخصص';
     $doctor->save();
 });
