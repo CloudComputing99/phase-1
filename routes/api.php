@@ -37,5 +37,9 @@ Route::post('delete-visit' , 'VisitController@delete');
 
 Route::get('get-dr-visits' , 'VisitController@get_visits');
 
+/*------------------------------------------filter doctors------------------------------------------------------------*/
+
+Route::get('filter-doctors' , 'DoctorController@filterDoctors');
+
 
 
