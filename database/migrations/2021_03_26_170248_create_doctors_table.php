@@ -15,6 +15,10 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('name');
+            $table->text('city');
+            $table->text('Specialty');
+            $table->text('degree');
             $table->bigInteger('code')->nullable(false);
             $table->timestamps();
         });
@@ -29,4 +33,5 @@ class CreateDoctorsTable extends Migration
     {
         Schema::dropIfExists('doctors');
     }
+
 }
