@@ -41,3 +41,23 @@ Route::get('get-user-visits' , 'VisitController@get_visits');
 /*------------------------------------------filter doctors------------------------------------------------------------*/
 
 Route::get('filter-doctors' , 'DoctorController@filterDoctors');
+
+/*--------*/
+
+
+
+/*-------------------------------------------favorite apis------------------------------------------------------------*/
+
+Route::post('store-favorite' , 'FavoriteController@store');
+
+Route::post('delete-favorite' , 'FavoriteController@delete');
+
+Route::get('get-user-favorites' , 'FavoriteController@get_user_list');
+
+/*-------------------------------------------comment apis-------------------------------------------------------------*/
+
+Route::post('store-comment' , 'CommentController@store');
+
+Route::post('delete-comment' , 'CommentController@delete');
+
+Route::get('get-comments' , 'CommentController@get_comments');
