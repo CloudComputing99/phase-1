@@ -40,6 +40,3 @@ Route::get('get-user-visits' , 'VisitController@get_visits');
 /*------------------------------------------filter doctors------------------------------------------------------------*/
 
 Route::get('filter-doctors' , 'DoctorController@filterDoctors');
-
-
-
