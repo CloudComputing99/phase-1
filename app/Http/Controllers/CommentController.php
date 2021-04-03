@@ -82,13 +82,7 @@ class CommentController extends Controller
 
     public function get_comments(Request $request)
     {
-        $validator = Validator::make($request->all(),
-            [
-                'doctor_id' => 'required',
-            ]);
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
-        }
+
         $user = auth()->user();
         $comments = Comment::query()->where('user_id' , $user->id)->get();
 
