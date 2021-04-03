@@ -12,7 +12,7 @@ class VisitController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api' , ['except' => 'get_visits']);
+        $this->middleware('auth:api');
     }
 
 
@@ -102,15 +102,9 @@ class VisitController extends Controller
 
     public function get_visits(Request $request)
     {
-        $validator = Validator::make($request->all(),
-            [
-                'doctor_id' => 'required',
-            ]);
-        if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
-        }
-        $doctor_id = $request->doctor_id;
-        $visits = Visit::query()->where('doctor_id' , $doctor_id)->get();
+        $user = auth()->user();
+
+        $visits = Visit::query()->where('user_id' , $user->id)->get();
 
         return \response()->json([
             'message' => 'ok' ,
