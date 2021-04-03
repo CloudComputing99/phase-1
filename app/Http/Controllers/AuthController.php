@@ -105,4 +105,40 @@ class AuthController extends Controller
         ]);
     }
 
+
+
+    public function changeinfos(Request $request)
+    {
+        $validator = Validator::make($request->all(),
+            [
+                'user_name' => 'required',
+                'melli_code' => 'required',
+                'user_email' => 'required',
+            ]);
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+
+        $name = $request->user_name;
+        $melli_code = $request->melli_code;
+        $user_email = $request->user_email;
+
+        $logged_in_user = auth()->user();
+
+        $user = User::query()->find($logged_in_user->id);
+
+        $user->name = $name;
+        $user->email = $user_email;
+        $user->melli_code = $melli_code;
+        $user->save();
+
+        return response()->json([
+            'message' => 'user infos has been updated ' ,
+            'user' => $user
+        ] , 200 );
+
+
+
+    }
+
 }

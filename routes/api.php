@@ -28,6 +28,7 @@ Route::post('register' , 'AuthController@register');
 
 Route::post('delete-user' , 'AuthController@delete');
 
+Route::post('changeinfos' , 'AuthController@changeinfos');
 
 /*------------------------------------------visit apis----------------------------------------------------------------*/
 
