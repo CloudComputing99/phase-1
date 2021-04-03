@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Validator;
 
 class VisitController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),
@@ -69,14 +76,22 @@ class VisitController extends Controller
             return response()->json(['error' => $validator->errors()], 401);
         }
 
+        $user = auth()->user();
         $visit_id = $request->visit_id;
+
         if (Visit::query()->find($visit_id)){
             $visit = Visit::query()->find($visit_id);
-            $visit->delete();
-            return Response()->json([
-                'message' => 'successfully deleted' ,
-                'comment' => $visit
-            ] , 200);
+            if ($visit->user_id == $user->id){
+                $visit->delete();
+                return Response()->json([
+                    'message' => 'successfully deleted' ,
+                    'comment' => $visit
+                ] , 200);
+            }else{
+                return response()->json([
+                    'message' => 'you can not delete this visit'
+                ] , 403);
+            }
         }else{
             return response()->json([
                 'message' => 'visit is not available'

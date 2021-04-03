@@ -31,7 +31,7 @@ Route::post('delete-user' , 'AuthController@delete');
 
 /*------------------------------------------visit apis----------------------------------------------------------------*/
 
-Route::middleware('auth:api')->post('store-visit' , 'VisitController@store');
+Route::post('store-visit' , 'VisitController@store');
 
 Route::post('delete-visit' , 'VisitController@delete');
 
