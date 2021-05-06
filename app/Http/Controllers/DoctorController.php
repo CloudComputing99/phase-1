@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class DoctorController extends Controller
 {
 
+
     public function filterDoctors(Request $request)
     {
         $filter_list = array();
